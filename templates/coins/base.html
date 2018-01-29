@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crypto site</title>
+     <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'coins\css\materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'coins/css/style.css' %}">
+</head>
+<body>
+
+
+    {% block nav %}
+    <div class="container">
+        <nav class="nav-extended">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">Logo</a>
+              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+              <ul class="side-nav" id="mobile-demo">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+              </ul>
+            </div>
+            <div class="nav-content">
+              <ul class="tabs tabs-transparent">
+                <li class="tab"><a href="#test1">Test 1</a></li>
+                <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+                <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+                <li class="tab"><a href="#test4">Test 4</a></li>
+              </ul>
+            </div>
+        </nav>
+    </div>
+    {% endblock %}
+
+    {% block filter %}
+    <div class="flex-row">
+        <form id="coin-form" method="GET">
+            <button id="filter-btn btn">Filter</button>
+            <button id="layout-btn btn">Layout</button>
+            <input id="search-input" name="coin-search" placeholder="Search coin...">
+        </form>
+    </div>
+    {% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <div class="section-1">
+            <table class="main-table responsive-table striped">
+                <thead class="table-head">
+                    <tr class="table-row">
+                        <td id="coin-number">#</td>
+                        <td id="coin-name-sym">Coins</td>
+                        <td id="market-cap">Market Cap</td>
+                        <td id="price">Price</td>
+                        <td id="volume">Volume(24hr)</td>
+                        <td id="circulating">Circulating</td>
+                        <td id="1hr">1hr</td>
+                        <td id="24hr">24hr</td>
+                        <td id="weekly">Weekly</td>
+                    </tr>
+                </thead>
+            <tbody>
+            {% for sym in symbol %}
+                <tr class="#263238 blue-grey darken-{% cycle '3' '4' %}">
+                    <td id="coin-rank">{{sym.rank}}</td>
+                    <td id="coin-name">
+                {% for coin_data in coins_data %}
+                    <!-- show coin image -->
+                    {% if sym.symbol == coin_data.symbol %}
+                        <img src="{{coin_data.image.url}}">
+                    {% endif %}
+                {% endfor %}
+                    {{sym.name}}
+                    <br>
+                    {{sym.symbol}}
+                    </td>
+                    <td id="coin-marketcap"></td>
+                    <td id="coin-price"></td>
+                    <td id="coin-vol"></td>
+                    <td id="coin-cir"></td>
+                    <td id="coin-hr"></td>
+                    <td id="coin-day"></td>
+                    <td id="coin-week"></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+            </table>
+        </div>
+    {% endblock %}
+
+    <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons"></i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons"></i></a></li>
+     </ul>
+
+    {% block footer %}
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            </div>
+          </div>
+    {% endblock %}
+
+    {% block js %}
+        <script src="{% static 'coins\js\data.js' %}"></script>
+    {% endblock %}
+</body>
+
+</html>
