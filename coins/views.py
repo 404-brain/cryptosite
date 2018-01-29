@@ -1,21 +1,23 @@
 from django.shortcuts import render, HttpResponse
+from django.http import JsonResponse
+from django.core.serializers.json import DjangoJSONEncoder
+from django.core import serializers
 from coins.models import AllCoinInfo
 
-from cryptocompy import price
+from cryptocompy import price, coin
 from coinmarketcap import Market
 import json
 
 
-
-# api's to avoid
-# - binance
-
 coin_market = Market()
 ticker = coin_market.ticker(limit=10)
 
+# model objects
+coins_data = AllCoinInfo.objects.all()
+
 
 def index(request):
-    coins_data = AllCoinInfo.objects.all()
+    
     return render(request, 'coins/base.html', {'symbol': ticker,
                                                'coins_data': coins_data})
 
@@ -26,11 +28,8 @@ def coin_info(request):
     gets coinmarketcap api for coin rank/name/symbol
     '''
 
-    json_info = json.dumps(ticker)
-    return HttpResponse(json_info[0])
-
-
-
+    load = json.dumps(json.dumps(ticker))
+    return HttpResponse(load)
 
 def coin_price_info(request):
 
@@ -38,9 +37,14 @@ def coin_price_info(request):
     gets live coin prices/volumes etc.
     '''
 
-    coin_symbol = ''
-    coin = price
-    coin_price = coin.get_current_price("XRP", ["USD"], full=True)
+    # api
+    crypto_api = price
+    # access coin symbol objects in database. Seperate by comma
+    coin_symbols = ",".join(name.symbol for name in coins_data)
+
+
+    # get coin symbol api info
+    coin_price = crypto_api.get_current_price([coin_symbols], ["USD"], full=True)
     dump = json.dumps(coin_price)
 
     return HttpResponse(dump)
