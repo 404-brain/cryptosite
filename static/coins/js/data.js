@@ -30,7 +30,12 @@ function coinInfo(){
                         prices = coin_row[r].querySelector("#coin-price").innerHTML = "$" + coin_price_json.toLocaleString();
                         mrktcap = coin_row[r].querySelector("#coin-marketcap").innerHTML = "$" + coin_mrktcap_json.toLocaleString();
                         daypct = coin_row[r].querySelector("#coin-day").innerHTML = coin_daypct_json.toFixed(2) + "%";
-
+                        // Positive or Negative colors
+                        if(daypct.innerHTML.includes("-")){
+                            daypct.style.color = "red";
+                        }else{
+                            daypct.style.color = "green";
+                        }
                     }
                 }
             }
