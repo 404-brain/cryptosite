@@ -65,28 +65,146 @@
                         <td id="weekly">Weekly</td>
                     </tr>
                 </thead>
-            <tbody>
-            {% for sym in symbol %}
-                <tr class="#263238 blue-grey darken-{% cycle '3' '4' %}">
-                    <td id="coin-rank">{{sym.rank}}</td>
-                    <td id="coin-name">
+                        <!--- PAGE 1 -->
+            <tbody id="page1">
+            {% for sym in symbol|slice:"0:10" %}
+                <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
+                    <td id="coin-rank" >{{sym.rank}}</td>
+                    <td id="coin-id">
                 {% for coin_data in coins_data %}
                     <!-- show coin image -->
-                    {% if sym.symbol == coin_data.symbol %}
-                        <img src="{{coin_data.image.url}}">
+                    {% if sym.symbol == coin_data.symbol or sym.name == coin_data.name %}
+                        <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
                     {% endif %}
                 {% endfor %}
-                    {{sym.name}}
+                        <span id="coin-name">{{sym.name}}</span>
                     <br>
-                    {{sym.symbol}}
+                        <span id="coin-sym">{{sym.symbol}}</span>
                     </td>
-                    <td id="coin-marketcap"></td>
-                    <td id="coin-price"></td>
-                    <td id="coin-vol"></td>
-                    <td id="coin-cir"></td>
-                    <td id="coin-hr"></td>
-                    <td id="coin-day"></td>
-                    <td id="coin-week"></td>
+                    <td id="coin-marketcap">Null</td>
+                    <td id="coin-price">Null</td>
+                    <td id="coin-vol">Null</td>
+                    {% if '-' in sym.percent_change_1h %}
+                        <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
+                    {% else %}
+                        <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
+                    {% endif %}
+                    <td id="coin-day">Null</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+                        <!--- PAGE 2 -->
+            <tbody id="page2">
+            {% for sym in symbol|slice:"10:20" %}
+                <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
+                    <td id="coin-rank" >{{sym.rank}}</td>
+                    <td id="coin-id">
+                {% for coin_data in coins_data %}
+                    <!-- show coin image -->
+                    {% if sym.symbol == coin_data.symbol or sym.name == coin_data.name %}
+                        <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
+                    {% endif %}
+                {% endfor %}
+                        <span id="coin-name">{{sym.name}}</span>
+                    <br>
+                        <span id="coin-sym">{{sym.symbol}}</span>
+                    </td>
+                    <td id="coin-marketcap">Null</td>
+                    <td id="coin-price">Null</td>
+                    <td id="coin-vol">Null</td>
+                    {% if '-' in sym.percent_change_1h %}
+                        <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
+                    {% else %}
+                        <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
+                    {% endif %}
+                    <td id="coin-day">Null</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+                        <!--- PAGE 3 -->
+            <tbody id="page3">
+            {% for sym in symbol|slice:"20:30" %}
+                <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
+                    <td id="coin-rank" >{{sym.rank}}</td>
+                    <td id="coin-id">
+                {% for coin_data in coins_data %}
+                    <!-- show coin image -->
+                    {% if sym.symbol == coin_data.symbol or sym.name == coin_data.name %}
+                        <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
+                    {% endif %}
+                {% endfor %}
+                        <span id="coin-name">{{sym.name}}</span>
+                    <br>
+                        <span id="coin-sym">{{sym.symbol}}</span>
+                    </td>
+                    <td id="coin-marketcap">Null</td>
+                    <td id="coin-price">Null</td>
+                    <td id="coin-vol">Null</td>
+                    {% if '-' in sym.percent_change_1h %}
+                        <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
+                    {% else %}
+                        <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
+                    {% endif %}
+                    <td id="coin-day">Null</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+                        <!--- PAGE 4 -->
+            <tbody id="page4">
+            {% for sym in symbol|slice:"30:40" %}
+                <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
+                    <td id="coin-rank" >{{sym.rank}}</td>
+                    <td id="coin-id">
+                {% for coin_data in coins_data %}
+                    <!-- show coin image -->
+                    {% if sym.symbol == coin_data.symbol or sym.name == coin_data.name %}
+                        <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
+                    {% endif %}
+                {% endfor %}
+                        <span id="coin-name">{{sym.name}}</span>
+                    <br>
+                        <span id="coin-sym">{{sym.symbol}}</span>
+                    </td>
+                    <td id="coin-marketcap">Null</td>
+                    <td id="coin-price">Null</td>
+                    <td id="coin-vol">Null</td>
+                    {% if '-' in sym.percent_change_1h %}
+                        <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
+                    {% else %}
+                        <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
+                    {% endif %}
+                    <td id="coin-day">Null</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+                        <!--- PAGE 5 -->
+            <tbody id="page5">
+            {% for sym in symbol|slice:"40:50" %}
+                <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
+                    <td id="coin-rank" >{{sym.rank}}</td>
+                    <td id="coin-id">
+                {% for coin_data in coins_data %}
+                    <!-- show coin image -->
+                    {% if sym.symbol == coin_data.symbol or sym.name == coin_data.name %}
+                        <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
+                    {% endif %}
+                {% endfor %}
+                        <span id="coin-name">{{sym.name}}</span>
+                    <br>
+                        <span id="coin-sym">{{sym.symbol}}</span>
+                    </td>
+                    <td id="coin-marketcap">Null</td>
+                    <td id="coin-price">Null</td>
+                    <td id="coin-vol">Null</td>
+                    {% if '-' in sym.percent_change_1h %}
+                        <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
+                    {% else %}
+                        <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
+                    {% endif %}
+                    <td id="coin-day">Null</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -96,14 +214,14 @@
     {% endblock %}
 
     <ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons"></i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="waves-effect"><a href="#!"><i class="material-icons"></i></a></li>
-     </ul>
+        <li class="disabled"><a href="#!"><i class="material-icons"></i></a></li>
+        <li id="pg1" class="active"><a onclick="showPage1()">1</a></li>
+        <li class="waves-effect"><a onclick="showPage2()">2</a></li>
+        <li class="waves-effect"><a onclick="showPage3()">3</a></li>
+        <li class="waves-effect"><a onclick="showPage4()">4</a></li>
+        <li class="waves-effect"><a onclick="showPage5()">5</a></li>
+        <li class="waves-effect"><a href="#!"><i class="material-icons"></i></a></li>
+    </ul>
 
     {% block footer %}
             <div class="row">
