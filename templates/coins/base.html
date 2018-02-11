@@ -19,30 +19,21 @@
         <nav class="nav-extended">
             <div class="nav-wrapper">
               <a href="#" class="brand-logo">Logo</a>
-              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-              <ul class="side-nav" id="mobile-demo">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
-              </ul>
             </div>
             <div class="nav-content">
               <ul class="tabs tabs-transparent">
-                <li class="tab"><a href="#test1">Test 1</a></li>
-                <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-                <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-                <li class="tab"><a href="#test4">Test 4</a></li>
+                  <li class="tab"><a class="active" href="\">Home</a></li>
+                <li class="tab"><a href="{% url 'news' %}">Crypto News</a></li>
+                <li class="tab"><a href="{% url 'exchanges' %}">Exchanges</a></li>
               </ul>
             </div>
         </nav>
     </div>
     {% endblock %}
 
-    {% block filter %}
-    <div class="flex-row">
+    {% block search %}
+    <div class="flex-row-reverse">
         <form id="coin-form" method="GET">
-            <button id="filter-btn btn">Filter</button>
-            <button id="layout-btn btn">Layout</button>
             <input id="search-input" name="coin-search" placeholder="Search coin...">
         </form>
     </div>
@@ -59,14 +50,12 @@
                         <td id="market-cap">Market Cap</td>
                         <td id="price">Price</td>
                         <td id="volume">Volume(24hr)</td>
-                        <td id="circulating">Circulating</td>
                         <td id="1hr">1hr</td>
                         <td id="24hr">24hr</td>
-                        <td id="weekly">Weekly</td>
                     </tr>
                 </thead>
                         <!--- PAGE 1 -->
-            <tbody id="page1">
+            <tbody id="table1">
             {% for sym in symbol|slice:"0:10" %}
                 <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
                     <td id="coin-rank" >{{sym.rank}}</td>
@@ -94,7 +83,7 @@
             {% endfor %}
             </tbody>
                         <!--- PAGE 2 -->
-            <tbody id="page2">
+            <tbody id="table2">
             {% for sym in symbol|slice:"10:20" %}
                 <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
                     <td id="coin-rank" >{{sym.rank}}</td>
@@ -123,7 +112,7 @@
             </tbody>
 
                         <!--- PAGE 3 -->
-            <tbody id="page3">
+            <tbody id="table3">
             {% for sym in symbol|slice:"20:30" %}
                 <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
                     <td id="coin-rank" >{{sym.rank}}</td>
@@ -152,7 +141,7 @@
             </tbody>
 
                         <!--- PAGE 4 -->
-            <tbody id="page4">
+            <tbody id="table4">
             {% for sym in symbol|slice:"30:40" %}
                 <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
                     <td id="coin-rank" >{{sym.rank}}</td>
@@ -181,7 +170,7 @@
             </tbody>
 
                         <!--- PAGE 5 -->
-            <tbody id="page5">
+            <tbody id="table5">
             {% for sym in symbol|slice:"40:50" %}
                 <tr id="coin-row" class="blue-grey darken-{% cycle '3' '4' %}">
                     <td id="coin-rank" >{{sym.rank}}</td>
@@ -208,20 +197,24 @@
                 </tr>
             {% endfor %}
             </tbody>
-
             </table>
         </div>
     {% endblock %}
 
+
+    {% block pagination %}
     <ul class="pagination">
         <li class="disabled"><a href="#!"><i class="material-icons"></i></a></li>
-        <li id="pg1" class="active"><a onclick="showPage1()">1</a></li>
-        <li class="waves-effect"><a onclick="showPage2()">2</a></li>
-        <li class="waves-effect"><a onclick="showPage3()">3</a></li>
-        <li class="waves-effect"><a onclick="showPage4()">4</a></li>
-        <li class="waves-effect"><a onclick="showPage5()">5</a></li>
+        <li id="pg1" class="active-tab"><a onclick="showPage1()">1</a></li>
+        <li id="pg2" class="waves-effect"><a onclick="showPage2()">2</a></li>
+        <li id="pg3" class="waves-effect"><a onclick="showPage3()">3</a></li>
+        <li id="pg4" class="waves-effect"><a onclick="showPage4()">4</a></li>
+        <li id="pg5" class="waves-effect"><a onclick="showPage5()">5</a></li>
         <li class="waves-effect"><a href="#!"><i class="material-icons"></i></a></li>
     </ul>
+    {% endblock %}
+
+        <script src="{% static 'coins\js\pages.js' %}"></script>
 
     {% block footer %}
             <div class="row">
@@ -229,20 +222,6 @@
                 <h5 class="white-text">Footer Content</h5>
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
               </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
             </div>
           </div>
     {% endblock %}
@@ -250,6 +229,7 @@
     {% block js %}
         <script src="{% static 'coins\js\data.js' %}"></script>
         <script src="{% static 'coins\js\search.js' %}"></script>
+
     {% endblock %}
 </body>
 
