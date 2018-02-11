@@ -21,8 +21,17 @@ def index(request):
     return render(request, 'coins/base.html', {'symbol': ticker,
                                                'coins_data': coins_data})
 
+def exchanges(request):
 
-def coin_info(request):
+    return render(request, "coins/exchanges.html", {})
+
+
+def crypto_news(request):
+
+    return render(request, "coins/news.html", {})
+
+
+def coin_rank_info(request):
 
     '''
     gets coinmarketcap api for coin rank/name/symbol
