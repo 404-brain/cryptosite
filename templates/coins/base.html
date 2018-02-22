@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% block head %}
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,14 +12,14 @@
     <link rel="stylesheet" href="{% static 'coins\css\materialize.css' %}">
     <link rel="stylesheet" href="{% static 'coins/css/style.css' %}">
 </head>
+{% endblock %}
 <body>
-
 
     {% block nav %}
     <div class="container">
         <nav class="nav-extended">
             <div class="nav-wrapper">
-              <a href="#" class="brand-logo">Logo</a>
+              <a href="/" class="brand-logo">Logo</a>
             </div>
             <div class="nav-content">
               <ul class="tabs tabs-transparent">
@@ -66,19 +67,21 @@
                         <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
                     {% endif %}
                 {% endfor %}
+                    <a id="coin-url" href="{% url 'coin_info' coin=sym.name %}">
                         <span id="coin-name">{{sym.name}}</span>
                     <br>
                         <span id="coin-sym">{{sym.symbol}}</span>
+                    </a>
                     </td>
-                    <td id="coin-marketcap">Null</td>
-                    <td id="coin-price">Null</td>
-                    <td id="coin-vol">Null</td>
+                    <td id="coin-marketcap"></td>
+                    <td id="coin-price"></td>
+                    <td id="coin-vol"></td>
                     {% if '-' in sym.percent_change_1h %}
                         <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
                     {% else %}
                         <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
                     {% endif %}
-                    <td id="coin-day">Null</td>
+                    <td id="coin-day"></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -94,19 +97,21 @@
                         <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
                     {% endif %}
                 {% endfor %}
+                    <a id="coin-url" href="{% url 'coin_info' coin=sym.name %}">
                         <span id="coin-name">{{sym.name}}</span>
                     <br>
                         <span id="coin-sym">{{sym.symbol}}</span>
+                    </a>
                     </td>
-                    <td id="coin-marketcap">Null</td>
-                    <td id="coin-price">Null</td>
-                    <td id="coin-vol">Null</td>
+                    <td id="coin-marketcap"></td>
+                    <td id="coin-price"></td>
+                    <td id="coin-vol"></td>
                     {% if '-' in sym.percent_change_1h %}
                         <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
                     {% else %}
                         <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
                     {% endif %}
-                    <td id="coin-day">Null</td>
+                    <td id="coin-day"></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -123,19 +128,21 @@
                         <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
                     {% endif %}
                 {% endfor %}
+                    <a id="coin-url" href="{% url 'coin_info' coin=sym.name %}">
                         <span id="coin-name">{{sym.name}}</span>
                     <br>
                         <span id="coin-sym">{{sym.symbol}}</span>
+                    </a>
                     </td>
-                    <td id="coin-marketcap">Null</td>
-                    <td id="coin-price">Null</td>
-                    <td id="coin-vol">Null</td>
+                    <td id="coin-marketcap"></td>
+                    <td id="coin-price"></td>
+                    <td id="coin-vol"></td>
                     {% if '-' in sym.percent_change_1h %}
                         <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
                     {% else %}
                         <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
                     {% endif %}
-                    <td id="coin-day">Null</td>
+                    <td id="coin-day"></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -152,19 +159,21 @@
                         <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
                     {% endif %}
                 {% endfor %}
+                    <a id="coin-url" href="{% url 'coin_info' coin=sym.name %}">
                         <span id="coin-name">{{sym.name}}</span>
                     <br>
                         <span id="coin-sym">{{sym.symbol}}</span>
+                    </a>
                     </td>
-                    <td id="coin-marketcap">Null</td>
-                    <td id="coin-price">Null</td>
-                    <td id="coin-vol">Null</td>
+                    <td id="coin-marketcap"></td>
+                    <td id="coin-price"></td>
+                    <td id="coin-vol"></td>
                     {% if '-' in sym.percent_change_1h %}
                         <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
                     {% else %}
                         <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
                     {% endif %}
-                    <td id="coin-day">Null</td>
+                    <td id="coin-day"></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -181,19 +190,21 @@
                         <img id="coin-img" style="float:left;padding-right:15px;" src="{{coin_data.image.url}}">
                     {% endif %}
                 {% endfor %}
+                    <a id="coin-url" href="{% url 'coin_info' coin=sym.name %}">
                         <span id="coin-name">{{sym.name}}</span>
                     <br>
                         <span id="coin-sym">{{sym.symbol}}</span>
+                    </a>
                     </td>
-                    <td id="coin-marketcap">Null</td>
-                    <td id="coin-price">Null</td>
-                    <td id="coin-vol">Null</td>
+                    <td id="coin-marketcap"></td>
+                    <td id="coin-price"></td>
+                    <td id="coin-vol"></td>
                     {% if '-' in sym.percent_change_1h %}
                         <td id="coin-hr" style="color:red;">{{sym.percent_change_1h}}%</td>
                     {% else %}
                         <td id="coin-hr" style="color:green;">{{sym.percent_change_1h}}%</td>
                     {% endif %}
-                    <td id="coin-day">Null</td>
+                    <td id="coin-day"></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -214,8 +225,6 @@
     </ul>
     {% endblock %}
 
-        <script src="{% static 'coins\js\pages.js' %}"></script>
-
     {% block footer %}
             <div class="row">
               <div class="col l6 s12">
@@ -227,9 +236,9 @@
     {% endblock %}
 
     {% block js %}
+        <script src="{% static 'coins\js\pages.js' %}"></script>
         <script src="{% static 'coins\js\data.js' %}"></script>
         <script src="{% static 'coins\js\search.js' %}"></script>
-
     {% endblock %}
 </body>
 
