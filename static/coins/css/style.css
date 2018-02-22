@@ -1,15 +1,78 @@
-body{
-    background-color:black;
+html{
+
 }
+
+body{
+    background: linear-gradient(to bottom right, black, rgb(19, 56, 57), black);
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    background-position:center;
+    height:100%;
+}
+
+#coin-url{
+    color:white;
+}
+
+#coin-url:hover{
+    opacity: 0.5;
+}
+
+/* ___________ CONTAINER SECTION ___________ */
 
 .container {
     margin: 0px auto;
     margin-top: 10px;
 }
 
+.section-1{
+    background-color: #2F4F4F;
+    color:white;
+    border-radius:4px;
+}
+
+/* ___________ SINGLE COIN SECTION ___________ */
+
+
+.flex-row{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+#flex-column{
+    flex-direction:column;
+}
+
+#coin-id-img{
+}
+
+#coin-id-img > img{
+    float:left;
+    height:20px;
+}
+
+.section2{
+    background-color: #2F4F4F;
+    color:white;
+    border-radius:4px;
+    border:2px solid grey;
+}
+
+
+/* ___________ NAV SECTION ___________ */
+
 .nav-container{
     text-align:center
 }
+
+.nav-extended{
+    border-radius: 4px;
+    background-color: #2F4F4F;
+    margin-top:-10px;
+}
+
+/* ___________ FOOTER SECTION ___________ */
 
 .footer{
 
@@ -22,32 +85,33 @@ body{
     background-color: #2F4F4F;
     opacity: 0.7;
 }
-/* LARGE SCREENS */
 
-
-.nav-extended{
-    border-radius: 4px;
-    background-color: #2F4F4F;
-    margin-top:-10px;
+#lineChart{
+    border-left:1px solid grey;
+    border-bottom:1px solid grey;
 }
 
-.section-1{
-    background-color: #2F4F4F;
-    color:white;
-    border-radius:4px;
+
+.active-tab{
+    background-color:white;
 }
 
-.flex-row{
+
+#coin-image:hover{
+    opacity:0.2;
+}
+
+.flex-row-reverse{
     display:flex;
-    flex-direction:row;
-    justify-content:flex-end;
+    flex-direction:row-reverse;
+    justify-content:space-between;
+    width:85%;
 }
 
 #coin-form > button{
     border-radius:6px;
     background-color:black;
     color:white;
-
 }
 
 #search-input{
@@ -55,30 +119,21 @@ body{
     color:white;
 }
 
-.main-table{
-}
 
-.table-head{
-
-}
-
-.table-row{
-
-}
-
-.section-2{
-
-}
 /* _____________ */
 
 /* MEDIUM SCREENS */
 @media all and (max-width:800px){
-
+    #search-input{
+        width:100px;
+    }
 }
 /* _____________ */
 
 /* SMALL SCREENS */
 @media all and (max-width:500px){
-
+    #search-input{
+        width:90px;
+    }
 }
 /* _____________ */
