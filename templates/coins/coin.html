@@ -1,0 +1,76 @@
+{% extends 'coins/base.html' %}
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% for sym in symbol %}
+    {% for coin_data in coins_data %}
+        {% if sym.name == coin %}
+    <title id="symbol-title">{{sym.symbol}}(USD): </title>
+    <link rel="icon" href="{{coin_data.image.url}">
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+     <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'coins\css\materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'coins/css/style.css' %}">
+</head>
+{% endblock %}
+
+{% block search %}
+<div class="flex-row-reverse">
+    <form id="coin-form" method="GET">
+        <input id="search-input" name="coin-search" placeholder="Search coin...">
+    </form>
+</div>
+{% endblock %}
+
+{% block content %}
+    {% for sym in symbol %}
+        {% if sym.name == coin %}
+        <div class="container">
+            <div class="section2">
+                <div class="flex-row">
+                    <div id="coin-id-img">
+                    {% for coin_data in coins_data %}
+                        <!-- show coin image -->
+                        {% if sym.symbol == coin_data.symbol or sym.name == coin_data.name %}
+                        <img id="coin-img" src="{{coin_data.image.url}}">
+                        {% endif %}
+                    {% endfor %}
+                        <span id="coin-name">{{sym.name}}(<span id="coin-symbol">{{sym.symbol}}</span>)</span>
+                    </div>
+                        <div class="flex-column">
+                            <i class="tiny material-icons">attach_money</i>Price
+                            <hr>
+                            <p id="coin-price"></p>
+                        </div>
+                        <div class="flex-column">
+                            <i class="tiny material-icons">graphic_eq</i>Volume(24hr)
+                            <hr>
+                            <p id="coin-vol"></p>
+                        </div>
+                        <div class="flex-column">
+                            <i class="tiny material-icons">local_atm</i>Marketcap
+                            <hr>
+                            <p id="coin-marketcap"></p>
+                        </div>
+                </div>
+                <hr style="width:75%;opacity:0.5;color:grey;">
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+
+{% block pagination %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'coins\js\data2.js' %}"></script>
+{% endblock %}
+
