@@ -18,8 +18,10 @@ coins_data = AllCoinInfo.objects.all()
 
 def index(request):
     
+    stats = coin_market.stats(convert="USD")
     return render(request, 'coins/base.html', {'symbol': ticker,
-                                               'coins_data': coins_data})
+                                               'coins_data': coins_data,
+                                               'coin_stats': stats})
 
 def exchanges(request):
 
@@ -27,8 +29,9 @@ def exchanges(request):
 
 
 def crypto_news(request):
-
-    return render(request, "coins/news.html", {})
+    
+    news = news_api.get_top_headlines(q='crypto')
+    return render(request, "coins/news.html", {'news': news})
 
 
 def coin_rank_info(request):
